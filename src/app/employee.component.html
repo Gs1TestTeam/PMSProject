@@ -1,0 +1,137 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{employee.FirstName}} {{employee.LastName}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form #f=ngForm (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group" [class.has-error]="FirstName.errors">
+                <label for="FirstName" class="control-label">First Name: 
+                   <span *ngIf="FirstName.errors && FirstName.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="First&nbsp;Name&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="FirstName" type="text"  name="FirstName" [(ngModel)]='employee.FirstName' required #FirstName="ngModel" />
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" [class.has-error]="LastName.errors">
+                <label for="LastName" class="control-label">Last Name:
+                    <span *ngIf="LastName.errors && LastName.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="Last&nbsp;Name&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="LastName" type="text" name="LastName" [(ngModel)]='employee.LastName' required #LastName="ngModel"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="Position" class="control-label">Position:</label>
+                <select class="form-control" id="Position"  name="Position" [(ngModel)]="employee.Position">
+                  <option *ngFor='let position of positions' [value]="position._id">{{position.PositionName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" [class.has-error]="SalaryBonus.errors">
+                <label for="SalaryBonus" class="control-label">Salary Bonus:
+                    <span *ngIf="SalaryBonus.errors && SalaryBonus.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="Salary&nbsp;Bonus&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>   
+                </label>
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input class="form-control" id="SalaryBonus" type="number" name="SalaryBonus" [(ngModel)]="employee.SalaryBonus" required #SalaryBonus="ngModel"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group" [class.has-error]="AddressStreet.errors">
+                <label for="AddressStreet" class="control-label">Address (Street):
+                    <span *ngIf="AddressStreet.errors && AddressStreet.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="Address&nbsp;Street&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="AddressStreet" type="text" name="AddressStreet" [(ngModel)]="employee.AddressStreet" required #AddressStreet="ngModel" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group" [class.has-error]="AddressCity.errors">
+                <label for="AddressCity" class="control-label">Address (City):
+                    <span *ngIf="AddressCity.errors && AddressCity.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="Address&nbsp;City&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="AddressCity" type="text" name="AddressCity" [(ngModel)]="employee.AddressCity" required #AddressCity="ngModel" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group" [class.has-error]="AddressState.errors">
+                <label for="AddressState" class="control-label">Address (State):
+                    <span *ngIf="AddressState.errors && AddressState.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="Address&nbsp;State&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="AddressState" type="text" name="AddressState" [(ngModel)]="employee.AddressState" required #AddressState="ngModel" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group" [class.has-error]="AddressZip.errors">
+                <label for="AddressZip" class="control-label">Address (Zip Code):
+                    <span *ngIf="AddressZip.errors && AddressZip.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="Address&nbsp;Zip&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="AddressZip" type="text" name="AddressZip" [(ngModel)]="employee.AddressZip" required #AddressZip="ngModel" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group" [class.has-error]="PhoneNum.invalid">
+                <label for="PhoneNum" class="control-label">Phone Number:
+                    <span *ngIf="PhoneNum.valid !== true" class="glyphicon glyphicon-exclamation-sign" data-content="Phone&nbsp;Number&nbsp;is&nbsp;not&nbsp;invalid" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="PhoneNum" type="text" name="PhoneNum" [(ngModel)]="employee.PhoneNum" pattern="\+?[ ]*[1-9]?[ ]*\-?[ ]*\(?[ ]*[1-9][ ]*(\d[ ]*){2}\)?[ ]*\-?[ ]*(\d[ ]*){3}-[ ]*(\d[ ]*){4}" #PhoneNum="ngModel" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group" [class.has-error]="Extension.errors">
+                <label for="Extension" class="control-label">Extension:
+                    <span *ngIf="Extension.errors && Extension.errors.required" class="glyphicon glyphicon-exclamation-sign" data-content="Extension&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>
+                </label>
+                <input class="form-control" id="Extension" type="number" name="Extension" [(ngModel)]="employee.Extension" required #Extension="ngModel" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="HireDate" class="control-label">Hire Date:</label>
+                <input class="form-control" id="HireDate" name="HireDate" type="text" value="HireDate" readonly [(ngModel)]="employee.HireDate"  />
+              </div>
+            </div>
+          </div>
+          <hr />
+          <a routerLink="/employees" class="btn btn-warning pull-left">Return to Employee List</a>
+          <input type="submit" class="btn btn-primary pull-right" value="Update Employee" [disabled]="!f.valid" />
+          <br />
+          <br />
+        </form>
+      </div>
+    </div>
+    <div class="alert alert-success" *ngIf="successMessage">
+        <strong>Success!</strong> {{employee.FirstName}} {{employee.LastName}}'s information was successfully saved.
+      </div>
+    </div>
+    <!-- <br /><br /><br />
+    FirstName: {{FirstName.errors | json}} {{FirstName.errors && FirstName.errors.required | json}}<br>
+    LastName: {{LastName.errors | json}}<br>
+    SalaryBonus: {{SalaryBonus.errors | json}}<br>
+    AddressStreet: {{AddressStreet.errors | json}}<br>
+    AddressCity: {{AddressCity.errors | json}}<br>
+    AddressState: {{AddressState.errors | json}}<br>
+    AddressZip: {{AddressZip.errors | json}}<br>
+    PhoneNum: {{PhoneNum.errors | json}} requiredPattern: {{PhoneNum.invalid | json}}<br>
+    Extension: {{Extension.errors | json}}<br>                        
+
+    <br /><br /><br />
+    Employee: {{employee | json }}
+    <br /><br /><br />
+    Positions: {{positions | json }}
+    <br /><br /><br />
+    {{successMessage}}
+    <br /><br /><br /> -->
+</div>
