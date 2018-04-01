@@ -5,7 +5,7 @@ Written by Jongkuk Lee
 
 Demo Url: https://fast-earth-31699.herokuapp.com
 
-• **Overview:** Project Management System was an Angular/Node.js/RESTful API-based system to manage the employee information such as employee, job position information and so on
+• **Overview:** Employee Portal System was an Angular/Node.js/RESTful API-based system to manage the employee information such as employee, job position information and so on
 
 • **Key responsibilities:**
 -	Created the back-end Web API using NodeJS/RESTful API to handle the data on MongoDB
