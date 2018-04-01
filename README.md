@@ -13,7 +13,7 @@ Demo Url: https://fast-earth-31699.herokuapp.com
   &nbsp;&nbsp;&nbsp;&nbsp;Back-end system source code URL: https://github.com/JongkukLee/PMSProject_Backend
 
 -	Designed reusable components such as navigation bar, sidebar, header, footer, main content component
--	Created select/update components using React/Angular to render on UI pages or to use other components
+-	Created select/update services using React/Angular to render on UI pages or to use other components
 -	Tested Unit modules using Jasmine/Angular testing utilities
 -	Built/Deployed application on Cloud platform (Heroku)
 
