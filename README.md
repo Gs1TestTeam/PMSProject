@@ -1,5 +1,4 @@
 # Employee Portal System
-Sep 2017 – Dec 2017
 
 Written by Jongkuk Lee
 
